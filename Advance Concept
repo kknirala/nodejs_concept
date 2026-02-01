@@ -1,0 +1,37 @@
+1. Event Loop and Non-blocking I/O
+The event loop is the heart of Node.js, allowing it to perform non-blocking I/O operations despite being single-threaded. Understanding its intricacies is crucial for optimizing application performance.
+
+Components:
+Call Stack: Executes synchronous code.
+Callback Queue: Holds callbacks waiting to be executed after their asynchronous operations complete.
+Event Loop: Checks if the call stack is empty, then fetches callbacks from the callback queue.
+
+Important Functions:
+process.nextTick(): Places callback in a separate queue, which runs before the next event loop cycle.
+setImmediate(): Queues callback to be executed in the next event loop cycle.
+
+2. Buffers and TypedArrays
+Buffers are raw memory allocations outside V8’s heap, crucial for handling binary data efficiently.
+
+3. Streams
+Streams are powerful abstractions for handling data flow, especially when working with large datasets.
+
+4. Clusters and Worker Threads
+For CPU-intensive tasks, leveraging multiple cores is crucial. Node.js offers two main ways to do this: Clusters and Worker Threads.
+
+5. Advanced Asynchronous Patterns
+While Promises and async/await are fundamental, there are more advanced patterns for handling complex asynchronous scenarios.
+Parallel Execution with Promise.all and Promise.allSettled:
+Advanced Error Handling with async/await:
+
+6. Custom Stream Implementation with Backpressure Handling
+7. Advanced Clustering with Zero-Downtime Reloads
+8. Custom Promise Implementation with Cancellation Support
+9. Memory-Efficient Processing of Large Datasets using Generators
+10. Advanced Error Handling with Domain Module (Deprecated but Instructive)
+11. V8 Engine and libuv
+12. Microtasks and Macrotasks
+13. The Thread Pool
+14. Monitoring and Profiling
+
+
