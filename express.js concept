@@ -21,3 +21,53 @@ How do you optimize the performance of an Express.js application?
 How do you implement security best practices such as input validation and sanitization in an Express.js application?
 How do you use a Content Security Policy (CSP) to secure an Express.js application?
 How do you deploy an Express.js application to a production environment?
+
+
+
+
+
+-------------------
+Express.js Core Concepts
+What it is: A minimal, unopinionated web framework for Node.js that abstracts the http module to simplify routing and middleware management.
+
+Basic App: Initialize with const app = express(), define a route, and call app.listen(port).
+
+Defining Routes: Use methods matching HTTP verbs: app.get(), app.post(), app.put(), app.delete().
+
+Query & Form Data: Access query strings via req.query. Use express.json() and express.urlencoded() middleware to access form data via req.body.
+
+Middleware: Functions that execute during the request-response cycle. Used via app.use() or within specific routes. They must call next() to pass control.
+
+app.route() vs. Router(): app.route() avoids duplicate path naming for multiple verbs on one path. express.Router() creates modular, mountable route handlers (mini-apps).
+
+Error Handling: Use specialized middleware with four arguments: (err, req, res, next).
+
+Static Files: Use the built-in express.static() middleware to serve images, CSS, and JS.
+
+Template Engines: Set the engine (e.g., app.set('view engine', 'pug')) and use res.render('viewName') to inject data into HTML.
+
+Databases: Connected via drivers or ORMs/ODMs (Mongoose for MongoDB, Sequelize or Prisma for SQL).
+
+Auth & Authorization: Usually handled via Passport.js or JWT middleware to verify identity and permissions.
+
+Testing: Commonly tested using Jest or Mocha for logic, and Supertest for endpoint integration testing.
+
+CORS: Use the cors package to set headers that allow or restrict cross-origin resource sharing.
+
+Proxy Configuration: Use app.set('trust proxy', true) when behind a load balancer (like Nginx) to correctly capture client IP/protocol.
+
+File Uploads: Use Multer middleware to handle multipart/form-data.
+
+WebSockets: Integrate via the socket.io or ws library, typically by passing the Express HTTP server to the socket instance.
+
+Sessions & Cookies: Managed using cookie-parser and express-session, often with a Redis store for production scalability.
+
+Frontend Integration: Express acts as the API layer. For React/Angular, it serves static builds or acts as a headless JSON backend.
+
+Performance Optimization: Use Gzip compression, offload CPU tasks to worker threads, implement caching (Redis), and use a reverse proxy.
+
+Input Validation: Use libraries like Joi, Zod, or express-validator to sanitize inputs and prevent injection.
+
+CSP (Content Security Policy): Implemented via Helmet.js to prevent XSS by restricting which resources the browser is allowed to load.
+
+Production Deployment: Use environment variables (NODE_ENV=production), process managers like PM2, and containerization with Docker on platforms like AWS, GCP, or Azure.
